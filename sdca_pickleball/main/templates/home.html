@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}  <!-- Add this line to load static files -->
+
+{% block title %}SDCA Pickleball{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url('{% static 'images/background.jpg' %}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white;
+        text-align: center;
+        padding-top: 20%;
+    }
+    .content-wrapper {
+        background: rgba(0, 0, 0, 0.637); /* Optional: To make text more readable */
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+</style>
+<div class="content-wrapper">
+    <h1>SDCA Pickleball</h1>
+    <p>Local Events, Local Courts and Local Coaches near you!</p>
+</div>
+{% endblock %}

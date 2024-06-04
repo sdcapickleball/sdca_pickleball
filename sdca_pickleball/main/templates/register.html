@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Register for an Event</h1>
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <label for="event">Select local event:</label>
+        <select id="event" name="event">
+            <option value="fall_socal_open">The Fall SoCal Open</option>
+        </select>
+
+        <label for="division">Division:</label>
+        <select id="division" name="division" onchange="showFields()">
+            <option value="mixed_2.5">Mixed 2.5</option>
+            <option value="mixed_3.0">Mixed 3.0</option>
+            <option value="mixed_3.5">Mixed 3.5</option>
+            <option value="mixed_4.0">Mixed 4.0</option>
+            <option value="mixed_4.5">Mixed 4.5</option>
+            <option value="mixed_open">Mixed Open</option>
+            <option value="women_2.5">Women’s 2.5</option>
+            <option value="women_3.0">Women’s 3.0</option>
+            <option value="women_3.5">Women’s 3.5</option>
+            <option value="women_4.0">Women’s 4.0</option>
+            <option value="women_4.5">Women’s 4.5</option>
+            <option value="women_open">Women’s Open</option>
+            <option value="men_2.5">Men’s 2.5</option>
+            <option value="men_3.0">Men’s 3.0</option>
+            <option value="men_3.5">Men’s 3.5</option>
+            <option value="men_4.0">Men’s 4.0</option>
+            <option value="men_4.5">Men’s 4.5</option>
+            <option value="men_open">Men’s Open</option>
+        </select>
+
+        <label for="age_bracket">Age Bracket:</label>
+        <select id="age_bracket" name="age_bracket">
+            <option value="challengers">The Challengers (8+)</option>
+            <option value="premier">The Premier (45+)</option>
+        </select>
+
+        <label for="player1_first_name">Player 1's First Name:</label>
+        <input type="text" id="player1_first_name" name="player1_first_name">
+
+        <label for="player1_last_name">Player 1's Last Name:</label>
+        <input type="text" id="player1_last_name" name="player1_last_name">
+
+        <label for="player1_dupr_id">Player 1's DUPR ID:</label>
+        <input type="text" id="player1_dupr_id" name="player1_dupr_id">
+
+        <label for="player2_first_name">Player 2's First Name:</label>
+        <input type="text" id="player2_first_name" name="player2_first_name">
+
+        <label for="player2_last_name">Player 2's Last Name:</label>
+        <input type="text" id="player2_last_name" name="player2_last_name">
+
+        <label for="player2_dupr_id">Player 2's DUPR ID:</label>
+        <input type="text" id="player2_dupr_id" name="player2_dupr_id">
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    function showFields() {
+        var division = document.getElementById("division").value;
+        var ageBracket = document.getElementById("age_bracket");
+        
+        if (division === "mixed_open" || division === "women_open" || division === "men_open") {
+            ageBracket.style.display = "block";
+        } else {
+            ageBracket.style.display = "none";
+        }
+    }
+
+    // Initial call to set the visibility of age bracket
+    showFields();
+</script>
+{% endblock %}
